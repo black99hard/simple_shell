@@ -11,24 +11,24 @@ ssize_t r = 0;
 int builtin_ret = 0;
 while (r != -1 && builtin_ret != -2)
 {
-clear_info(info);
+clearInfo(info);
 if (Isinteractive(info))
 _puts("$ ");
 _eputchar(BUF_FLUSH);
-r = get_input(info);
+r = getInput(info);
 if (r != -1)
 {
-set_info(info, av);
+setInfo(info, av);
 builtin_ret = find_builtin(info);
 if (builtin_ret == -1)
 find_cmd(info);
 }
 else if (Isinteractive(info))
 _putchar('\n');
-free_info(info, 0);
+freeInfo(info, 0);
 }
 write_history(info);
-free_info(info, 1);
+freeInfo(info, 1);
 if (!Isinteractive(info) && info->status)
 exit(info->status);
 if (builtin_ret == -2)
@@ -131,7 +131,7 @@ if (child_pid == 0)
 {
 if (execve(info->path, info->argv, get_environ(info)) == -1)
 {
-free_info(info, 1);
+freeInfo(info, 1);
 if (errno == EACCES)
 exit(126);
 exit(1);

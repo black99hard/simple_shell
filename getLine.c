@@ -16,11 +16,11 @@ if (!*len) /* if nothing left in the buffer, fill it */
 /*bfree((void **)info->cmd_buf);*/
 free(*buf);
 *buf = NULL;
-signal(SIGINT, sigintHandler);
+signal(SIGINT, sigintHandLer);
 #if USE_GETLINE
 r = getline(buf, &len_p, stdin);
 #else
-r = _getline(info, buf, &len_p);
+r = _getLine(info, buf, &len_p);
 #endif
 if (r > 0)
 {
@@ -41,12 +41,12 @@ info->cmd_buf = buf;
 return (r);
 }
 /**
-* get_input - gets a line minus the newline
+* getInput - gets a line minus the newline
 * @info: parameter struct
 *
 * Return: bytes read
 */
-ssize_t get_input(info_t *info)
+ssize_t getInput(info_t *info)
 {
 static char *buf; /* the ';' command chain buffer */
 static size_t i, j, len;
@@ -75,8 +75,8 @@ info->cmd_buf_type = CMD_NORM;
 }
 *buf_p = p; /* pass back pointer to current command position */
 return (_strlen(p)); /* return length of current command */}
-*buf_p = buf; /* else not a chain, pass back buffer from _getline() */
-return (r); /* return length of buffer from _getline() */
+*buf_p = buf; /* else not a chain, pass back buffer from _getLine() */
+return (r); /* return length of buffer from _getLine() */
 }
 /**
 * read_buf - reads a buffer
@@ -97,14 +97,14 @@ if (r >= 0)
 return (r);
 }
 /**
-* _getline - gets the next line of input from STDIN
+* _getLine - gets the next line of input from STDIN
 * @info: parameter struct
 * @ptr: address of pointer to buffer, preallocated or NULL
 * @length: size of preallocated ptr buffer if not NULL
 *
 * Return: s
 */
-int _getline(info_t *info, char **ptr, size_t *length)
+int _getLine(info_t *info, char **ptr, size_t *length)
 {
 static char buf[READ_BUF_SIZE];
 static size_t i, len;
@@ -136,12 +136,12 @@ if (length)
 return (s);
 }
 /**
-* sigintHandler - blocks ctrl-C
+* sigintHandLer - blocks ctrl-C
 * @sig_num: the signal number
 *
 * Return: void
 */
-void sigintHandler(__attribute__((unused))int sig_num)
+void sigintHandLer(__attribute__((unused))int sig_num)
 {
 _puts("\n");
 _puts("$ ");

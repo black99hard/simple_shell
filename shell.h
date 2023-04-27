@@ -179,14 +179,14 @@ int History(info_t *);
 int alias(info_t *);
 
 /*toem_getline.c */
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
+ssize_t getInput(info_t *);
+int _getLine(info_t *, char **, size_t *);
+void sigintHandLer(int);
 
 /* toem_getinfo.c */
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
+void clearInfo(info_t *);
+void setInfo(info_t *, char **);
+void freeInfo(info_t *, int);
 
 /* toem_environ.c */
 char *_getenv(info_t *, const char *);
