@@ -171,7 +171,7 @@ void remove_comments(char *);
 
 /* toem_builtInFunctionsc.c */
 int _Exit(info_t *);
-int _Exit(info_t *);
+int _Cd(info_t *);
 int _Help(info_t *);
 
 /* toem_builtInFunctions2.c */
